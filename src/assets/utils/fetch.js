@@ -1,4 +1,18 @@
-async function fetchDetails(pokemonName) {
+const MAX_POKEMON = 151
+async function fetchAllPokemon() {
+	try {
+		const response = await fetch(
+			`https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}}`
+		)
+		const data = await response.json()
+		return data
+	} catch (error) {
+		console.error('Error fetching data:', error)
+		return {}
+	}
+}
+
+async function fetchPokemonDetails(pokemonName) {
 	try {
 		const response = await fetch(
 			`https://pokeapi.co/api/v2/pokemon/${pokemonName}`
@@ -11,15 +25,4 @@ async function fetchDetails(pokemonName) {
 	}
 }
 
-async function fetchList(url) {
-	try {
-		const response = await fetch(url || `https://pokeapi.co/api/v2/pokemon/`)
-		const data = await response.json()
-		return data.results
-	} catch (error) {
-		console.error('Error fetching data:', error)
-		return {}
-	}
-}
-
-export { fetchDetails, fetchList }
+export { fetchAllPokemon, fetchPokemonDetails }

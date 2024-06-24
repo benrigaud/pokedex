@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import styles from './PokemonCard.module.css'
 import { capitalize } from '../../../../utils/textFormat'
-import { fetchDetails } from '../../../../utils/fetch'
+import { fetchPokemonDetails } from '../../../../utils/fetch'
+import styles from './PokemonCard.module.css'
 
-const PokemonCard = ({ name }) => {
+const PokemonCard = ({ name, id }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [pokemonDetails, setPokemonDetails] = useState(null)
 
 	const loadDetails = () => {
-		fetchDetails(name)
+		fetchPokemonDetails(name)
 			.then((data) => {
 				setPokemonDetails(data)
 				setIsLoading(false)
@@ -25,16 +25,24 @@ const PokemonCard = ({ name }) => {
 	}, [])
 
 	if (isLoading) {
-		return <div>Loading...</div>
+		return (
+			<div className={styles.loading}>
+				<img src="../../../../../pokeball.png" alt="pokeball" />
+			</div>
+		)
 	}
 
 	const renderPokemonCard = (data) => {
 		return (
 			<div className={styles.pokemonCard}>
 				<Link to={`/pokemon/${data.name}`}>
-					<img src={data.sprites.other.home.front_default} alt={data.name} />
+					<img
+						src={data.sprites.other.dream_world.front_default}
+						alt={data.name}
+					/>
 				</Link>
 				<h3>
+					<span>#{id} </span>
 					<Link to={`/pokemon/${data.name}`}>{capitalize(data.name)}</Link>
 				</h3>
 			</div>

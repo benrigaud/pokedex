@@ -1,7 +1,8 @@
 .pokemonList {
 	display: grid;
 	gap: 20px;
-	background-color: rgb(211, 84, 84);
+	background-color: #ffffff;
 	padding: 2rem;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	border-radius: 5px;
 }

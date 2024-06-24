@@ -1,12 +1,14 @@
-const usePokemonData = (params) => {
-	fetch(`https://pokeapi.co/api/v2/pokemon/${params}`)
-		.then((response) => response.json())
-		.then((data) => {
-			return data
-		})
-		.catch((error) => {
-			console.error('Error fetching data:', error)
-		})
+import useEventsResults from '../assets/state/pokemon-list'
+
+const useEventsData = () => {
+	const { data, isLoading, error, fetchEvents } = useEventsResults()
+	return {
+		events: data.results || [],
+		// page: data?.page || {},
+		isLoading,
+		error,
+		fetchEvents
+	}
 }
 
-export default usePokemonData
+export default useEventsData
