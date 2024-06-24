@@ -1,10 +1,10 @@
-import PokemonList from './assets/components/PokemonList'
+import MyRoutes from './assets/routes'
 import './App.css'
 
 function App() {
 	return (
 		<>
-			<PokemonList />
+			<MyRoutes />
 		</>
 	)
 }

@@ -1,24 +1,14 @@
 import { useState, useEffect } from 'react'
 import PokemonCard from './components/PokemonCard'
 import styles from './PokemonList.module.css'
-
-async function fetchList() {
-	try {
-		const response = await fetch(`https://pokeapi.co/api/v2/pokemon/`)
-		const data = await response.json()
-		return data.results
-	} catch (error) {
-		console.error('Error fetching data:', error)
-		return {}
-	}
-}
+import { fetchList } from '../../utils/fetch'
 
 const PokemonList = () => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [listData, setListData] = useState(null)
 
-	const loadData = () => {
-		fetchList()
+	const loadData = (url) => {
+		fetchList(url)
 			.then((data) => {
 				setListData(data)
 				setIsLoading(false)
