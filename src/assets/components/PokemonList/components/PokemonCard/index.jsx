@@ -41,10 +41,21 @@ const PokemonCard = ({ name, id }) => {
 						alt={data.name}
 					/>
 				</Link>
+				<div className={styles.id}>#0{id} </div>
 				<h3>
-					<span>#{id} </span>
 					<Link to={`/pokemon/${data.name}`}>{capitalize(data.name)}</Link>
 				</h3>
+				<div className={styles.types}>
+					{data.types.map((type, index) => (
+						<div
+							key={index}
+							className={`${styles.type} ${type.type.name}`}
+							key={type.slot}
+						>
+							{capitalize(type.type.name)}
+						</div>
+					))}
+				</div>
 			</div>
 		)
 	}

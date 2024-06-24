@@ -4,19 +4,6 @@
 	border: solid 1px #d1def3;
 	padding: 20px;
 	border-radius: 5px;
-	h3 {
-		margin: 10px 0 0;
-		font-size: 1.25rem;
-		text-align: left;
-		a {
-			color: #455f86;
-		}
-		span {
-			color: silver;
-			font-weight: 400;
-			font-size: 15px;
-		}
-	}
 	img {
 		width: 100%;
 		aspect-ratio: 1/1;
@@ -31,9 +18,36 @@
 			rgba(255, 255, 255, 0.164) 50%,
 			rgba(255, 255, 255, 0.164)
 		);
-		margin: 0;
+		margin: 0 0 10px;
 		display: block;
 		border: solid 1px #d1def341;
+	}
+	.id {
+		text-align: left;
+		font-weight: bold;
+		color: silver;
+		font-size: 14px;
+
+		line-height: 1;
+	}
+	h3 {
+		margin: 0 0 10px;
+		font-size: 1.25rem;
+		text-align: left;
+		a {
+			color: #455f86;
+		}
+	}
+	.types {
+		display: flex;
+		gap: 10px;
+		.type {
+			padding: 2px 8px 3px;
+			border-radius: 5px;
+			background-color: #f4f8ff;
+			font-weight: bold;
+			font-size: 12px;
+		}
 	}
 }
 

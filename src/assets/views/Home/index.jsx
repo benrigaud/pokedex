@@ -1,5 +1,6 @@
 import Header from '../../components/Header'
 import PokemonList from '../../components/PokemonList'
+import Footer from '../../components/Footer'
 import usePokemonResults from '../../state/pokemon-list'
 import { useState, useEffect } from 'react'
 
@@ -39,6 +40,7 @@ const Home = () => {
 		<>
 			<Header onSearch={handleNavbarSearch} />
 			{renderPokemonList()}
+			<Footer />
 		</>
 	)
 }

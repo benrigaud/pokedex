@@ -27,14 +27,81 @@ const PokemonCard = ({ name }) => {
 		return <div>Loading...</div>
 	}
 
-	const renderPokemonCard = (data) => {
+	const renderPokemonCard = (pokemon) => {
 		return (
 			<div className={styles.pokemonDetail}>
-				<img
-					src={data.sprites.other.dream_world.front_default}
-					alt={data.name}
-				/>
-				<h3>{capitalize(data.name)}</h3>
+				<div className={styles.split}>
+					<div className={styles.side}>
+						<img
+							src={pokemon.sprites.other.dream_world.front_default}
+							alt={pokemon.name}
+						/>
+					</div>
+					<div className={styles.side}>
+						<h3 className={styles.title}>
+							{capitalize(pokemon.name)}
+							<span> #0{pokemon.id}</span>
+						</h3>
+						<div className={styles.types}>
+							{pokemon.types.map((type) => (
+								<span
+									className={`${styles.type} ${type.type.name}`}
+									key={type.slot}
+								>
+									{capitalize(type.type.name)}
+								</span>
+							))}
+						</div>
+						<div className={styles.info}>
+							<div className={styles.infoRow}>
+								<span>
+									<strong>Abilities:</strong>
+								</span>
+								<ul>
+									{pokemon.abilities.map((ab) => (
+										<li key={ab.slot}>{capitalize(ab.ability.name)}</li>
+									))}
+								</ul>
+							</div>
+							<div className={styles.infoRow}>
+								<span>
+									<strong>Height:</strong>
+								</span>
+								<span>
+									<span>{(pokemon.height * 0.328084).toFixed(2)} ft.</span>
+								</span>
+							</div>
+							<div className={styles.infoRow}>
+								<span>
+									<strong>Weight:</strong>
+								</span>
+								<span>{pokemon.weight} lbs.</span>
+							</div>
+						</div>
+						<div className={styles.stats}>
+							<h4>
+								Stats <span>200%</span>
+							</h4>
+							<div className={styles.statsWrapper}>
+								{pokemon.stats.map((stat) => (
+									<div key={stat.stat.name} className={styles.stat}>
+										<span
+											className={styles.statusBar}
+											style={{ width: stat.base_stat / 2 + '%' }}
+										></span>
+										<span
+											className={styles.statName}
+											style={{ width: stat.base_stat / 2 + '%' }}
+										>
+											{capitalize(stat.stat.name)}
+											<span>{stat.base_stat}%</span>
+										</span>
+									</div>
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		)
 	}

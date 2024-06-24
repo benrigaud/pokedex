@@ -8,4 +8,9 @@ function capitalize(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
 }
 
-export { lowercase, capitalize }
+function removeSpace(str) {
+	if (!str) return ''
+	return str.replace(/\s/g, '')
+}
+
+export { lowercase, capitalize, removeSpace }
