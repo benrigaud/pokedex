@@ -1,9 +1,7 @@
-const MAX_POKEMON = 151
-async function fetchAllPokemon() {
+async function fetchAllPokemon(url) {
+	const targetUrl = url ? url : `https://pokeapi.co/api/v2/pokemon`
 	try {
-		const response = await fetch(
-			`https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMON}}`
-		)
+		const response = await fetch(targetUrl)
 		const data = await response.json()
 		return data
 	} catch (error) {

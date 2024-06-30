@@ -2,6 +2,8 @@
 	color: #333;
 	background-color: #ffffff;
 	padding: 20px;
+	padding: 0;
+	border-radius: 5px;
 	.title {
 		margin: 10px 0 0;
 		font-size: 1.25rem;
@@ -20,13 +22,19 @@
 		display: block;
 		padding: 20px;
 		box-sizing: border-box;
-		border-radius: 5px;
+		border-radius: 5px 5px 0 0;
 		height: 100%;
 	}
 	.split {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		gap: 0;
+		.side {
+			&:last-child {
+				padding: 20px;
+			}
+		}
 	}
 	.info {
 		padding: 0;
@@ -68,6 +76,7 @@
 		background-color: #f4f8ff;
 		text-align: left;
 		padding: 10px;
+		border-radius: 5px;
 		h4 {
 			margin: 0 0 10px;
 			display: flex;
@@ -115,11 +124,16 @@
 	@media screen and (min-width: 768px) {
 		.split {
 			flex-direction: row;
-			gap: 40px;
 			.side {
 				flex: 1;
 				.title {
 					font-size: 3rem;
+				}
+				img {
+					border-radius: 5px 0 0 5px;
+				}
+				&:last-child {
+					padding: 40px;
 				}
 			}
 		}

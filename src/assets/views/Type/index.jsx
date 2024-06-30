@@ -5,7 +5,7 @@ import { fetchAllPokemon } from '../../utils/fetch'
 import { useState, useEffect } from 'react'
 import ListNavigation from '../../components/PokemonList/components/ListNavigation'
 
-const Home = () => {
+const Type = () => {
 	const [pokemonList, setPokemonList] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [urlNext, setUrlNext] = useState(null)
@@ -59,4 +59,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Type

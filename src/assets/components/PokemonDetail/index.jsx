@@ -3,31 +3,42 @@ import styles from './PokemonDetail.module.css'
 import { fetchPokemonDetails } from '../../utils/fetch'
 import { capitalize } from '../../utils/textFormat'
 
-const PokemonCard = ({ name }) => {
+const PokemonDetail = ({ name }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [pokemonDetails, setPokemonDetails] = useState(null)
+	const [error, setError] = useState(null)
 
 	const loadDetails = () => {
 		fetchPokemonDetails(name)
 			.then((data) => {
 				setPokemonDetails(data)
 				setIsLoading(false)
+				console.log(data)
 			})
 			.catch((error) => {
 				console.error('Error fetching Pokemon data:', error)
+				setError(error)
 				setIsLoading(false)
 			})
 	}
 
 	useEffect(() => {
 		loadDetails()
-	}, [])
+	}, [name])
 
 	if (isLoading) {
-		return <div>Loading...</div>
+		return (
+			<div className="loading">
+				<img src="../../../../../pokeball.png" alt="pokeball" />
+				<span>Loading...</span>
+			</div>
+		)
 	}
 
-	const renderPokemonCard = (pokemon) => {
+	const renderPokemonDetail = (pokemon) => {
+		if (error) {
+			return <div>Error: {error.message}</div>
+		}
 		return (
 			<div className={styles.pokemonDetail}>
 				<div className={styles.split}>
@@ -106,7 +117,7 @@ const PokemonCard = ({ name }) => {
 		)
 	}
 
-	return <>{renderPokemonCard(pokemonDetails)}</>
+	return <>{renderPokemonDetail(pokemonDetails)}</>
 }
 
-export default PokemonCard
+export default PokemonDetail

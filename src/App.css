@@ -6,9 +6,17 @@
 }
 
 .loading {
+	text-align: center;
 	img {
+		display: inline-block;
 		width: 30px;
 		animation: rotate-animation 1s infinite linear;
+	}
+	span {
+		display: block;
+		font-size: 12px;
+		font-weight: bold;
+		color: #ffffff;
 	}
 }
 

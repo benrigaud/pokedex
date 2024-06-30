@@ -41,8 +41,8 @@ const PokemonCard = ({ name, id }) => {
 						alt={data.name}
 					/>
 				</Link>
-				<div className={styles.id}>#0{id} </div>
 				<h3>
+					<div className={styles.id}>#0{id} </div>
 					<Link to={`/pokemon/${data.name}`}>{capitalize(data.name)}</Link>
 				</h3>
 				<div className={styles.types}>
